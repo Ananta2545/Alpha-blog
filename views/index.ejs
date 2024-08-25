@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index1.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
+    <title>Blog</title>
+</head>
+<body class="fade-in">
+    <section class="home-section">
+        <h1>Alpha Blog</h1>
+        <p>" <em><span class="p-span">Write</span></em>, <em><span class="p-span">express</span></em>, and <em><span class="p-span">connect</span></em> with the world"</p>
+        <div class="home-btn">
+            <button id="create-post-btn" class="btn"><a href="/new">Create New Post</a></button>
+        </div>
+    
+        <ul>
+            <div class="ul">
+                    <% posts.forEach((post, index) => { %>
+                        <div class="li">
+                            <li>
+                                <h2><%= post.title %></h2>
+                                <p><%= post.content %></p>
+                                <a href="/edit/<%= index %>">Edit</a>
+                                <form action="/delete/<%= index %>" method="POST" style="display:inline;">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </li>
+                        </div>
+                    <% }) %>
+                </ul>
+            </div>
+        
+    </section>
+    <script>
+        window.addEventListener("popstate", function() {
+            document.body.classList.remove("fade-out");
+            document.body.classList.add("fade-in");
+        });
+        document.getElementById("create-post-btn").addEventListener('click', function(e){
+            e.preventDefault();
+            document.body.classList.add("fade-out");
+            setTimeout(()=>{
+                window.location.href = "/new";
+            }, 500);
+        });
+        
+    </script>
+</body>
+</html>
+
+
