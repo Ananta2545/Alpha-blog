@@ -1,104 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body {
     position: relative;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-}
-
-.fade-in{
-    opacity: 0;
-    animation: fadeIn 0.5s ease-in forwards;
-}
-
-@keyframes fadeIn{
-    to {
-        opacity: 1;
-    }
-}
-
-*{
     margin: 0;
     padding: 0;
 }
 
-
-.home-section{
-    background-image: url(./images/bg1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
+* {
+    box-sizing: border-box;
 }
 
-.home-section > h1 {
-    font-size: 5rem;
-    text-align: center;
-    padding-top: 5rem;
-    color: rgb(253, 125, 125);
-}
-
-.home-section > p{
-    font-family: "Dancing Script", cursive;
-    font-size: 2rem;
-    text-align: center;
-    padding-top: 3rem;
-    color: brown;
-}
-
-.p-span{
-    color: rgb(103, 103, 101);
-    font-size: 3.5rem;
-}
-
-.home-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn {
-    color: white;
-    background-color: #FF6F61;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    margin-top: 3rem;
-    outline: none;
-    border: none;
-    padding: 2rem 2rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: inline-block;
-}
-
-.btn a {
-    text-decoration: none;
-    color: white;
-    display: block;
-    height: 100%;
-    width: 100%;
-}
-
-.btn:hover {
-    cursor: pointer;
-    background-color: #FF9671;
-    color: #FFEBCD;
-    transform: scale(1.05);
-}
-
-
-/* index1.css and styles.css */
-body.fade-in {
+.fade-in {
     opacity: 0;
-    animation: fadeIn 0.5s forwards;
-}
-
-body.fade-out {
-    opacity: 1;
-    animation: fadeOut 0.5s forwards;
+    animation: fadeIn 1s ease-in forwards;
 }
 
 @keyframes fadeIn {
@@ -107,207 +26,194 @@ body.fade-out {
     }
 }
 
-@keyframes fadeOut {
-    to {
+/* General styling for the home section */
+.home-section {
+    background-image: url(./images/bg1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    animation: fadeInBackground 1.5s ease-in-out;
+}
+
+/* Adding a smooth fade-in animation for the background */
+@keyframes fadeInBackground {
+    from {
         opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 
-/* post.css */
-.ul {
-    margin-top: 25px;
+/* Heading animation and styling */
+.home-section > h1 {
+    font-size: 5rem;
+    color: rgb(253, 125, 125);
+    margin: 0;
+    opacity: 0;
+    animation: fadeInHeading 1.2s ease-in forwards, slideInFromTop 1s ease-out;
+}
+
+/* Keyframes for a smooth slide-in effect from the top for the heading */
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animation for the paragraph */
+.home-section > p {
+    font-family: "Dancing Script", cursive;
+    font-size: 2rem;
+    color: brown;
+    opacity: 0;
+    animation: fadeInParagraph 1.5s ease-in forwards, slideInFromBottom 1.3s ease-out;
+}
+
+/* Slide-in effect for the paragraph */
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInHeading {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInParagraph {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Enhancing the button styles */
+.home-btn {
     display: flex;
-    /* background-color: rgba(171, 169, 169, 0.7); Soft light gray background */
-    background-color: rgb(241, 238, 238);
-    padding: 25px;
-    gap: 15px; /* Slightly larger gap for a more spacious look */
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.btn {
+    color: white;
+    background-color: #FF6F61;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    outline: none;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.btn a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #FF9671;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add a shadow on hover for more depth */
+}
+
+/* Styling for cards */
+.ul {
+    display: flex;
     flex-wrap: wrap;
-    margin: 25px;
-    border-radius: 15px; /* Adding rounded corners to the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a floating effect */
+    gap: 20px;
+    justify-content: center;
+    padding: 25px;
+    margin: 25px auto;
+    background-color: rgba(241, 238, 238, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .li {
     list-style: none;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: rgba(44, 62, 80, 0.8); /* Classy dark blue-gray color */
-    color: #ecf0f1; /* Light, elegant text color */
-    min-width: 25vw;
-    height: auto; /* Adjust height to content */
+    background-color: rgba(44, 62, 80, 0.8);
+    color: #ecf0f1;
+    width: 25vw;
+    padding: 20px;
     border-radius: 20px;
     text-align: center;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .li:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Card Title */
 .li h2 {
     font-size: 1.8rem;
     margin-bottom: 10px;
-    color: #ecf0f1; /* Keeping the light text color */
+    color: #ecf0f1;
     font-weight: 600;
-    border-bottom: 2px solid rgb(253, 125, 125);; /* Adding a classy underline */
+    border-bottom: 2px solid rgb(253, 125, 125);
     padding-bottom: 10px;
-    text-align: justify; /* Justify text for a neat look */
-    word-wrap: break-word; /* Ensures long words are broken to fit within the card */
-    overflow-wrap: break-word; /* Additional word-breaking for text that goes outside the container */
 }
 
-/* Card Content */
 .li p {
     font-size: 1rem;
-    color: #bdc3c7; /* Slightly lighter gray for the content text */
+    color: #bdc3c7;
     margin-bottom: 20px;
     line-height: 1.5;
-    text-align: justify; /* Justify text for a neat look */
-    word-wrap: break-word; /* Ensures long words are broken to fit within the card */
-    overflow-wrap: break-word; /* Additional word-breaking for text that goes outside the container */
 }
 
-/* Edit and Delete Buttons */
 .li a, .li button {
-    background-color: rgb(253, 125, 125);; /* Teal background for buttons */
-    color: #ecf0f1; /* Light text color */
+    background-color: rgb(253, 125, 125);
+    color: #ecf0f1;
     padding: 10px 15px;
     margin: 5px;
-    font-size: 1.0rem;
+    font-size: 1rem;
     border: none;
     border-radius: 5px;
     text-decoration: none;
     font-weight: 700;
     transition: background-color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
-    display: inline-block;
 }
 
 .li a:hover, .li button:hover {
-    background-color: #16a085; /* Darker teal on hover */
+    background-color: #16a085;
     transform: scale(1.05);
 }
 
-.li form {
-    display: inline-block;
-}
-
-/* Button alignment */
-.li a {
-    margin-right: 10px;
-}
-
-@media (min-width: 100px) and (max-width: 399px){
-    .home-section>h1{
-        font-size: 2rem;
-        font-weight: 800;
-    }
-    .home-section>p{
-        font-size: 2rem;
-        width: 95vw;
-        font-weight: 800;
-        margin-top: -20px;
-    }
-    .p-span{
-        font-size: 2rem;
-    }
-    .btn{
-        margin-top: 30px;
-        padding: 10px 10px;
-    }
-    .li{
-        width: 100%;
+/* Responsive breakpoints */
+@media (max-width: 1000px) {
+    .li {
+        width: 90%;
     }
 }
-@media (min-width: 400px) and (max-width: 699px){
-    .home-section>h1{
-        font-size: 2.5rem;
-    }
-    .home-section>p{
-        font-size: 2rem;
-        text-align: center;
-        font-weight: 800;
-        margin-top: -20px;
-    }
-    .p-span{
-        font-size: 2rem;
-    }
-    .btn{
-        margin-top: 28px;
-        padding: 0.5rem 0.5rem;
-    }
-    .li{
-        max-width: 699px;
-    }
-}
-@media (min-width: 700px) and (max-width: 1000px){
-    .home-section>h1{
-        font-size: 3rem;
-    }
-    .home-section>p{
-        font-size: 2.5rem;
-        text-align: center;
-        font-weight: 800;
-        margin-top: -20px;
-    }
-    .p-span{
-        font-size: 2rem;
-    }
-    .btn{
-        margin-top: 25px;
-        padding: 1rem 1rem;
-    }
-    .li{
-        max-width: 280px;
-    }
-}
-@media (min-width: 1001px) and (max-width: 1400px){
-    .home-section>h1{
-        font-size: 3.5rem;
-    }
-    .home-section>p{
-        font-size: 2.5rem;
-        text-align: center;
-        font-weight: 800;
-        margin-top: -20px;
-    }
-    .p-span{
-        font-size: 2.5rem;
-    }
-    .btn{
-        padding: 14px 14px;
-        margin-top: 20px;
-    }
-    .li{
-        max-width: 360px;
-    }
-}
-@media (min-width: 1401px) and (max-width: 2500px){
-    .home-section>h1{
-        font-size: 4rem;
-    }
-    .home-section>p{
-        font-size: 3.5rem;
-        text-align: center;
-        font-weight: 800;
-        margin-top: -20px;
-    }
-    .p-span{
-        font-size: 3rem;
-    }
-    .btn{
-        padding: 15px 15px;
-        margin-top: 15px;
-    }
-    .li{
-        max-width: 395px;
-    }
-}
-
-
-
