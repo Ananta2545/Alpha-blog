@@ -1,5 +1,4 @@
 /* Reset some basic styles */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,13 +10,15 @@ body {
     background-color: #f0f2f5;
     color: #333;
     line-height: 1.6;
-    /* padding: 20px; */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 h1, h2 {
     color: #444;
     margin-bottom: 10px;
     font-weight: 300;
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
 }
 
 ul {
@@ -31,11 +32,15 @@ li {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.3s;
 }
 
 li:hover {
     transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 label {
@@ -43,6 +48,8 @@ label {
     margin-top: 10px;
     font-weight: 500;
     color: #555;
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
 }
 
 input, textarea {
@@ -53,34 +60,42 @@ input, textarea {
     border-radius: 4px;
     resize: vertical;
     font-size: 16px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 input:focus, textarea:focus {
     outline: none;
     border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
 }
 
 button {
     padding: 12px 25px;
-    background-color:rgb(253, 125, 125);
+    background-color: rgb(253, 125, 125);
     border: none;
     color: #fff;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #d9534f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 a {
     color: white;
     text-decoration: none;
     font-weight: 500;
+    transition: color 0.3s ease-in-out;
 }
 
+a:hover {
+    color: #ddd;
+}
 
 a.button-link {
     display: inline-block;
@@ -89,14 +104,15 @@ a.button-link {
     padding: 10px 20px;
     border-radius: 5px;
     margin-bottom: 15px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 a.button-link:hover {
     background-color: #218838;
+    transform: translateY(-3px);
 }
 
-.new-section{
+.new-section {
     background-image: url(./images/bg1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -106,70 +122,85 @@ a.button-link:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
 }
 
-
-.heading > h1{
+.heading > h1 {
     font-size: 4rem;
     text-align: center;
     font-weight: 800;
     color: rgb(253, 125, 125);
+    opacity: 0;
+    animation: fadeInUp 1.5s forwards;
 }
 
-.heading{
-    /* width: 60vw; */
-    background-color: rgba(249, 195, 195, 0.5); /* Add transparency */
+.heading {
+    background-color: rgba(249, 195, 195, 0.5);
     padding: 80px;
     border-radius: 15px;
+    opacity: 0;
+    animation: fadeInUp 1.5s forwards;
 }
 
-/* Responsive design */
-
-@media (min-width: 0px) and (max-width: 400px){
-    .heading>h1{
+@media (min-width: 0px) and (max-width: 400px) {
+    .heading > h1 {
         font-size: 1.5rem;
     }
-    .heading{
+    .heading {
         width: 90%;
-        padding: 10px 18px;  
+        padding: 10px 18px;
     }
-    body{
+    body {
         padding: 0;
         margin: 0;
     }
-    /* input{
-        width: 68vw;
-        height: 9vh;
-    } */
-    .new-section{
+    .new-section {
         height: 90vh;
     }
 }
-@media (min-width: 401px) and (max-width: 767px){
-    .heading>h1{
+
+@media (min-width: 401px) and (max-width: 767px) {
+    .heading > h1 {
         font-size: 2rem;
     }
-    .heading{
+    .heading {
         width: 73%;
         height: 98%;
-        padding: 10px;  
+        padding: 10px;
     }
-    body{
+    body {
         padding: 0;
         margin: 0;
     }
-    /* input{
-        width: 68vw;
-        height: 9vh;
-    } */
-    .new-section{
+    .new-section {
         height: 94vh;
         margin: 0;
         padding: 0;
     }
 }
 
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
+/* Fade-in-up animation for smoother transitions */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* index1.css and styles.css */
 body.fade-in {
@@ -180,12 +211,6 @@ body.fade-in {
 body.fade-out {
     opacity: 1;
     animation: fadeOut 0.5s forwards;
-}
-
-@keyframes fadeIn {
-    to { 
-        opacity: 1;
-    }
 }
 
 @keyframes fadeOut {
