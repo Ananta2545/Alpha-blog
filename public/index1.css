@@ -119,6 +119,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 3rem;
+    gap: 15px;
 }
 
 .btn {
@@ -216,4 +217,9 @@ body {
     .li {
         width: 90%;
     }
+}
+
+nav{
+    display: flex;
+    justify-content: end;
 }
