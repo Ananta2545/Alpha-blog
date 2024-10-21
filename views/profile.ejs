@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/profile.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
+    <title>User Profile</title>
+</head>
+<body class="fade-in">
+    <section class="new-section">
+        <div class="heading">
+            <h1>Your Profile</h1>
+            <form method="GET">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="<%= name %>" disabled>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="<%= email %>" disabled>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" value="<%= password %>" disabled>
+                <button id="back-to-home"><a href="/">Back to Home</a></button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("back-to-home").addEventListener('click', function(e){
+            e.preventDefault();
+            document.body.classList.add("fade-out");
+            setTimeout(()=>{
+                window.location.href = "/";
+            }, 500);
+        });
+        window.addEventListener("popstate", function() {
+            document.body.classList.remove("fade-out");
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
+</html>

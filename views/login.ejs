@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/profile.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
+    <title>Login</title>
+</head>
+<body class="fade-in">
+    <section class="new-section">
+        <div class="heading">
+            <h1>Login</h1>
+            <form action="/api/v1/login" method="POST">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Log In</button>
+                <button id="to-signup">Don't have an account?</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("to-signup").addEventListener('click', function(e){
+            e.preventDefault();
+            document.body.classList.add("fade-out");
+            setTimeout(()=>{
+                window.location.href = "/signup";
+            }, 500);
+        });
+        window.addEventListener("popstate", function() {
+            document.body.classList.remove("fade-out");
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
+</html>
