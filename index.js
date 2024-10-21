@@ -2,6 +2,7 @@ import express from 'express';
 import session from 'express-session'
 import connectToMongo from './connectDb.js';
 import User from './models/User.js'
+import dotenv from 'dotenv';
 // import {FileURLToPath} from 'url';
 // import { dirname } from 'path';
 // import bodyParser from 'body-parser';
@@ -9,8 +10,12 @@ import User from './models/User.js'
 const app = express();
 const port = 3000;
 
+
+dotenv.config()
+
+
 app.use(session({
-    secret: 'geigei', // A secret key used to sign the session ID cookie
+    secret: process.env.SECRET, // A secret key used to sign the session ID cookie
     resave: true,             // Don't save session if unmodified
     saveUninitialized: false,   // Save uninitialized session
     cookie: { secure: false }  // Use true if you're using HTTPS
