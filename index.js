@@ -3,6 +3,7 @@ import session from 'express-session'
 import connectToMongo from './connectDb.js';
 import User from './models/User.js'
 import dotenv from 'dotenv';
+import bcrypt from 'bcryptjs';
 // import {FileURLToPath} from 'url';
 // import { dirname } from 'path';
 // import bodyParser from 'body-parser';
@@ -108,7 +109,12 @@ app.post('/api/v1/signup', async (req, res) => {
    }
 
    // Create new user save it to db
-   const newUser = new User( { name, email, password });
+
+   const salt = await bcrypt.genSalt(10);
+
+   const securePassword = await bcrypt.hash(password, salt);
+
+   const newUser = new User( { name, email, password: securePassword });
    await newUser.save();
 
    // Automatically log the user in (create session)
@@ -129,7 +135,9 @@ app.post('/api/v1/login', async (req,res)=>{
         return res.status(400).send('Invalid username or password');
     }
 
-    if(user.password !== password){
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if(!passwordMatch){
         return res.status(400).send('Invalid username or password');
     }
 
